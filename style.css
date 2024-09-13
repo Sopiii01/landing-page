@@ -1,0 +1,303 @@
+* {
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box ;
+}
+
+body {
+    font-family : Arial, sans-serif;
+    line-height : 1.6;
+    color : #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background: #050505;
+    color: #a6c7e5;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header.logo h1 {
+    display:inline;
+    margin-left: 20px
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#hero {
+    background: url('img/background.jpg') no-repeat center center/cover;
+    color: #fff;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+}
+
+#hero .jumbotron {
+    background: rgba(27, 27, 27, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#hero h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.cta {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #568ebd;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.cta:hover {
+    background: #555;
+}
+
+section {
+    padding: 60px 0;
+}
+
+#about {
+    background: #a5a9aa;
+    text-align: center;
+}
+
+#features {
+    background: #79b1f1;
+    text-align: center;
+}
+
+#features .features-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.feature i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.feature:hover {
+    background: #ddd;
+    color: #000;
+}
+
+#products {
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.product-card {
+    display: inline-block;
+    width: 30%;
+    margin: 20px;
+    padding: 20px;
+    background: #79b1f1;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0,0.1);
+    transition: transform 0.3s;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+#contact {
+    background: #79b1f1;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.address-map {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.address {
+    flex: 1;
+    padding: 20px
+}
+
+.map {
+    flex: 1;
+    padding: 20px
+}
+footer {
+    background: #333;
+    color: #79b1f1;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .social {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+footer .social li {
+    margin: 0 10px;
+}
+
+footer .social li a {
+    color: #79b1f1;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+/* responsive */
+@media (max-widh: 768px) {
+    header .container {
+        flex-direction: colum;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    #hero h2 {
+        font-size: 2.5rem;
+    }
+
+    #features .features-row {
+        flex-direction: column;
+    }
+
+    .produc-card {
+        width: 80%;
+    }
+    .address-map {
+        flex-direction: column;
+    }
+}
+setTimeout(function () {
+    alert("Selamat datang di Toko Online Kami!");
+}, 3000);
+
+const heroText = document.querySelector("#hero h2");
+const colors = ["#FF5733", "#33FF57", "3357FF"];
+let colorIndex = 0;
+
+function changeHeroTextColor() {
+    heroText.style.color = colors[colorIndex];
+    colorIndex = (colorIndex + 1) % colors.length;
+}
+
+setInterval(changeHeroTextColor, 2000);
+
+let currentImageIndex = 0;
+const images = ["img/bg.jpg", "img/shoe1.png", "img/shoe2.png"];
+
+function changeHeroImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    document.querySelector(
+        "#hero"
+    ).style.backgroundImage = `url('${images[currentImageIndex]}')`;
+}
+
+setInterval(changeHeroImage, 2000);
+
+const productImages = document.querySelectorAll(".product-card img");
+
+productImages.forEach ((image) => {
+    image.addEventListener("click", () => {
+        image.style.transform = "scale(1.5)";
+        image.style.transition = "transform 0.5s";
+    });
+    image.addEventListener("mouseleave", () => {
+        image.style.transform = "scale(1)";
+    });
+});
+
+document.querySelectorAll(".cta").forEach(function (button) {
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+        alert("Terima kasih telah membeli produk ini!");
+    });
+});
+
+const scrollToTopBtn = document.createElement("button");
+scrollToTopBtn.textContent = "^";
+scrollToTopBtn.id = "scrollToTopBtn";
+document.body.appendChild(scrollToTopBtn);
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+});
+
+scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+});
